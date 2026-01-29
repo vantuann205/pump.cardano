@@ -94,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCreate, onGoLivestreams, 
                 <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-500 group-focus-within:text-blue-500 transition-colors" />
                 <input
                   type="search"
-                  placeholder="search ADA tokens..."
+                  placeholder="Search ADA tokens..."
                   className="w-full rounded-lg bg-pump-card border border-gray-800 py-2 pl-10 pr-4 text-sm outline-none focus:border-blue-500 focus:bg-gray-900 transition-all text-white placeholder-gray-600"
                 />
             </div>
@@ -121,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCreate, onGoLivestreams, 
                     className="flex items-center gap-2 rounded bg-gray-800 px-3 py-1.5 text-xs font-bold text-white hover:bg-gray-700 transition-colors"
                 >
                     <Wallet className="h-3 w-3" />
-                    <span>connect wallet</span>
+                    <span>Connect Wallet</span>
                 </button>
             </div>
             <button className="xl:hidden p-2 text-gray-400 hover:text-white">

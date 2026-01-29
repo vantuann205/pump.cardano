@@ -15,9 +15,12 @@ const TokenInfoBar: React.FC<TokenInfoBarProps> = ({ coin }) => {
     <div className="flex flex-col md:flex-row items-start md:items-center justify-between bg-pump-card border border-gray-800 rounded-lg p-4 mb-4 gap-4">
       <div className="flex items-center gap-4">
         <div className="flex flex-col">
-            <h1 className="text-xl font-bold text-white flex items-center gap-2">
-                {coin.name} <span className="text-gray-500 text-lg">/{coin.ticker}</span>
+            <h1 className="text-xl font-bold text-white">
+                {coin.name}
             </h1>
+            <div className="text-lg text-gray-500 font-mono">
+                {coin.ticker}
+            </div>
             <div className="flex items-center gap-3 text-xs mt-1">
                 <span className="bg-gray-800 text-gray-300 px-2 py-0.5 rounded flex items-center gap-1 cursor-pointer hover:bg-gray-700">
                     addr1...{coin.creator.slice(-3)} <ExternalLink className="w-3 h-3" />

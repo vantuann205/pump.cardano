@@ -27,8 +27,11 @@ const CoinCard: React.FC<CoinCardProps> = ({ coin, onClick }) => {
                 <span className="text-xs text-pump-green font-mono">MC: {formatMarketCap(coin.marketCap)}</span>
             </div>
             <h3 className="text-lg font-bold text-white truncate mt-1">
-                {coin.name} <span className="text-gray-400 text-sm font-normal">[{coin.ticker}]</span>
+                {coin.name}
             </h3>
+            <p className="text-sm text-gray-400 font-mono">
+                {coin.ticker}
+            </p>
             <p className="text-sm text-gray-400 line-clamp-2 mt-1 mb-2">
                 {coin.description}
             </p>
