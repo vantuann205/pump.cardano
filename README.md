@@ -1,6 +1,6 @@
-# PumpGemini - Fair Launch Protocol
+# Pump.Cardano - Fair Launch Protocol
 
-A Next.js application for the PumpGemini fair launch protocol on Cardano.
+A Next.js application for the Pump.Cardano fair launch protocol on Cardano.
 
 ## Getting Started
 
@@ -26,12 +26,6 @@ pnpm install
 
 ```bash
 cp .env.example .env.local
-```
-
-4. Add your Gemini API key to `.env.local`:
-
-```
-GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 ### Running the Development Server
