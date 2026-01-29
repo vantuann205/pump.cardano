@@ -1,7 +1,8 @@
 import { GoogleGenAI } from "@google/genai";
 import { Coin } from "../types";
+import { formatMarketCap } from "../utils/formatters";
 
-const apiKey = process.env.API_KEY || ''; // In a real app, ensure this is set
+const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GEMINI_API_KEY || ''; // In a real app, ensure this is set
 const ai = new GoogleGenAI({ apiKey });
 
 export const generateCoinAnalysis = async (coin: Coin): Promise<string> => {
@@ -17,7 +18,7 @@ export const generateCoinAnalysis = async (coin: Coin): Promise<string> => {
         Coin Name: ${coin.name}
         Ticker: ${coin.ticker}
         Description: ${coin.description}
-        Market Cap: $${coin.marketCap}
+        Market Cap: ${formatMarketCap(coin.marketCap)}
         Bonding Curve Progress: ${coin.bondingCurveProgress}%
         
         Provide a short paragraph (max 50 words) predicting its fate.

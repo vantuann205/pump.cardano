@@ -31,7 +31,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ currentSort, onSortChange }) => {
         className="bg-pump-card border border-gray-800 text-white text-xs rounded p-2 outline-none w-full sm:w-auto focus:border-blue-500"
       >
         <option value="featured">Sort: Featured</option>
-        <option value="marketCap">Sort: Market Cap</option>
+        <option value="marketCap">Sort: MC</option>
         <option value="lastReply">Sort: Last Reply</option>
         <option value="creationTime">Sort: Creation Time</option>
       </select>

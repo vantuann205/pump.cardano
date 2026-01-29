@@ -1,6 +1,7 @@
 import React from 'react';
 import { Coin } from '../types';
 import { Crown } from 'lucide-react';
+import { formatMarketCap } from '../utils/formatters';
 
 interface KingOfTheHillProps {
   coin: Coin;
@@ -29,7 +30,7 @@ const KingOfTheHill: React.FC<KingOfTheHillProps> = ({ coin, onClick }) => {
             />
             <div className="flex-1 text-center md:text-left">
                 <h3 className="text-3xl font-black text-white mb-2">{coin.name} [{coin.ticker}]</h3>
-                <p className="text-yellow-200/80 text-lg mb-4 font-medium">Market Cap: ${coin.marketCap.toLocaleString()}</p>
+                <p className="text-yellow-200/80 text-lg mb-4 font-medium">MC: {formatMarketCap(coin.marketCap)}</p>
                 <p className="text-gray-300 max-w-2xl">{coin.description}</p>
                 
                 <div className="mt-4 w-full max-w-md">

@@ -64,8 +64,11 @@ const CoinDetail: React.FC<CoinDetailProps> = ({ coin, onBack, showToast }) => {
             user: `addr1...${Math.random().toString(36).substring(7, 10)}`
         };
 
-        setLiveTrades(prev => [newTrade, ...prev].slice(0, 20)); // Keep last 20
-    }, 2000); // New trade every 2 seconds
+        setLiveTrades(prev => {
+          const updated = [newTrade, ...prev].slice(0, 15); // Keep last 15 for better performance
+          return updated;
+        });
+    }, 3000); // Slower interval: New trade every 3 seconds for smoother experience
 
     return () => clearInterval(interval);
   }, []);

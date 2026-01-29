@@ -1,6 +1,7 @@
 import React from 'react';
 import { Coin } from '../types';
 import { TrendingUp, AlertCircle, ExternalLink } from 'lucide-react';
+import { formatMarketCap } from '../utils/formatters';
 
 interface TokenInfoBarProps {
   coin: Coin;
@@ -19,7 +20,7 @@ const TokenInfoBar: React.FC<TokenInfoBarProps> = ({ coin }) => {
             </h1>
             <div className="flex items-center gap-3 text-xs mt-1">
                 <span className="bg-gray-800 text-gray-300 px-2 py-0.5 rounded flex items-center gap-1 cursor-pointer hover:bg-gray-700">
-                    {coin.creator.substring(0,6)}...{coin.creator.substring(coin.creator.length-4)} <ExternalLink className="w-3 h-3" />
+                    addr1...{coin.creator.slice(-3)} <ExternalLink className="w-3 h-3" />
                 </span>
                 <span className="text-gray-500">Created {new Date(coin.createdAt).toLocaleDateString()}</span>
             </div>
@@ -34,10 +35,7 @@ const TokenInfoBar: React.FC<TokenInfoBarProps> = ({ coin }) => {
             </div>
         </div>
         <div>
-            <div className="text-[10px] text-gray-500 uppercase font-bold">Market Cap</div>
-            <div className="text-lg font-mono font-bold text-white">
-                ${coin.marketCap.toLocaleString()}
-            </div>
+            <div className="text-[10px] text-gray-500 uppercase font-bold">MC: {formatMarketCap(coin.marketCap)}</div>
         </div>
         <div className="hidden sm:block">
             <div className="text-[10px] text-gray-500 uppercase font-bold">24h Change</div>

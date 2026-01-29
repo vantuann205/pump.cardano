@@ -2,6 +2,7 @@ import React from 'react';
 import { Coin } from '../types';
 import BondingCurve from './BondingCurve';
 import { MessageSquare } from 'lucide-react';
+import { formatMarketCap } from '../utils/formatters';
 
 interface CoinCardProps {
   coin: Coin;
@@ -22,8 +23,8 @@ const CoinCard: React.FC<CoinCardProps> = ({ coin, onClick }) => {
         />
         <div className="flex flex-col flex-1 min-w-0">
             <div className="flex justify-between items-start">
-                <span className="text-xs text-gray-500">Created by {coin.creator}</span>
-                <span className="text-xs text-pump-green font-mono">Market Cap: ${coin.marketCap.toLocaleString()}</span>
+                <span className="text-xs text-gray-500">Created by addr1...{coin.creator.slice(-3)}</span>
+                <span className="text-xs text-pump-green font-mono">MC: {formatMarketCap(coin.marketCap)}</span>
             </div>
             <h3 className="text-lg font-bold text-white truncate mt-1">
                 {coin.name} <span className="text-gray-400 text-sm font-normal">[{coin.ticker}]</span>

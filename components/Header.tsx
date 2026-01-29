@@ -1,6 +1,8 @@
 import React from 'react';
 import { Wallet, Menu, Search, HelpCircle, LayoutGrid, PlusCircle, Tv, LifeBuoy } from 'lucide-react';
 import { ToastMessage } from './Toast';
+import DolphinLogo from './DolphinLogo';
+import { ViewState } from '../types';
 
 interface HeaderProps {
   onGoHome: () => void;
@@ -8,9 +10,10 @@ interface HeaderProps {
   onGoLivestreams: () => void;
   onGoSupport: () => void;
   showToast: (type: ToastMessage['type'], title: string, message: string) => void;
+  currentView: ViewState;
 }
 
-const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCreate, onGoLivestreams, onGoSupport, showToast }) => {
+const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCreate, onGoLivestreams, onGoSupport, showToast, currentView }) => {
 
   const handleConnectWallet = () => {
     // Simulate connection process
@@ -27,8 +30,8 @@ const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCreate, onGoLivestreams, 
         {/* Logo Section */}
         <div className="flex items-center gap-8">
             <div className="flex items-center gap-3 cursor-pointer group" onClick={onGoHome}>
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-black text-xl shadow-lg shadow-blue-600/20 group-hover:scale-105 transition-transform">
-                    ₳
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-600/20 group-hover:scale-105 transition-transform">
+                    <DolphinLogo size={32} />
                 </div>
                 <div className="hidden sm:flex flex-col">
                     <span className="text-lg font-bold tracking-tight text-white leading-none">
@@ -39,16 +42,44 @@ const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCreate, onGoLivestreams, 
             </div>
 
             <nav className="hidden xl:flex items-center gap-6 text-sm font-medium">
-                <button onClick={onGoHome} className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors">
+                <button 
+                    onClick={onGoHome} 
+                    className={`flex items-center gap-2 transition-colors ${
+                        currentView === ViewState.GRID || currentView === ViewState.DETAIL 
+                            ? 'text-white font-bold' 
+                            : 'text-gray-400 hover:text-white'
+                    }`}
+                >
                     <LayoutGrid className="w-4 h-4" /> Board
                 </button>
-                <button onClick={onGoLivestreams} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                <button 
+                    onClick={onGoLivestreams} 
+                    className={`flex items-center gap-2 transition-colors ${
+                        currentView === ViewState.LIVESTREAMS 
+                            ? 'text-white font-bold' 
+                            : 'text-gray-400 hover:text-white'
+                    }`}
+                >
                     <Tv className="w-4 h-4" /> Livestreams
                 </button>
-                <button onClick={onGoCreate} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                <button 
+                    onClick={onGoCreate} 
+                    className={`flex items-center gap-2 transition-colors ${
+                        currentView === ViewState.CREATE 
+                            ? 'text-white font-bold' 
+                            : 'text-gray-400 hover:text-white'
+                    }`}
+                >
                     <PlusCircle className="w-4 h-4" /> Start Coin
                 </button>
-                <button onClick={onGoSupport} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                <button 
+                    onClick={onGoSupport} 
+                    className={`flex items-center gap-2 transition-colors ${
+                        currentView === ViewState.SUPPORT 
+                            ? 'text-white font-bold' 
+                            : 'text-gray-400 hover:text-white'
+                    }`}
+                >
                     <LifeBuoy className="w-4 h-4" /> Support
                 </button>
                 <button className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
@@ -72,7 +103,14 @@ const Header: React.FC<HeaderProps> = ({ onGoHome, onGoCreate, onGoLivestreams, 
         {/* Actions */}
         <div className="flex items-center gap-3">
             <div className="hidden md:flex xl:hidden items-center gap-2">
-                 <button onClick={onGoCreate} className="flex items-center gap-2 text-gray-400 hover:text-white text-sm font-bold mr-2">
+                 <button 
+                    onClick={onGoCreate} 
+                    className={`flex items-center gap-2 text-sm font-bold mr-2 transition-colors ${
+                        currentView === ViewState.CREATE 
+                            ? 'text-white' 
+                            : 'text-gray-400 hover:text-white'
+                    }`}
+                >
                     <PlusCircle className="w-4 h-4" /> Start
                 </button>
             </div>

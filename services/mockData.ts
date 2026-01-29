@@ -30,8 +30,12 @@ const generateCoins = (count: number): Coin[] => {
       ticker: ticker,
       description: `The most decentralized ${noun.toLowerCase()} on the Hydra Layer 2 scaling solution. Powered by eUTXO logic.`,
       imageUrl: `https://picsum.photos/200/200?random=${i + 100}`,
-      creator: `addr1...${Math.random().toString(36).substring(7)}`,
-      marketCap: Math.floor(Math.random() * 100000) + 5000,
+      creator: `addr1...${Math.random().toString(36).substring(2, 5)}`,
+      marketCap: i === 0 ? 1500000000 : // 1.5B for first coin (test B format)
+                 i === 1 ? 850000000 : // 850M for second coin (test M format)  
+                 i === 2 ? 45000 : // 45K for third coin (test K format)
+                 i === 3 ? 2300000 : // 2.3M for fourth coin
+                 Math.floor(Math.random() * 500000) + 10000, // Random for others
       replies: Math.floor(Math.random() * 200),
       bondingCurveProgress: Math.floor(Math.random() * 100),
       createdAt: Date.now() - Math.floor(Math.random() * 10000000),
