@@ -1,6 +1,6 @@
 # Pump.Cardano - Fair Launch Protocol
 
-A Next.js application for the Pump.Cardano fair launch protocol on Cardano.
+A Next.js application for the Pump.Cardano fair launch protocol on Cardano
 
 ## Getting Started
 
